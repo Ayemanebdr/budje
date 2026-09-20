@@ -26,6 +26,7 @@
     --text-soft: #A9B3AC;
     --text-faint: #6C766E;
     --lime: #C6FF5E;
+    --lime-text: #C6FF5E;
     --lime-dim: #2B331B;
     --coral: #FF7A68;
     --coral-dim: #35201C;
@@ -44,6 +45,7 @@
     --text-soft: #565F59;
     --text-faint: #8B948D;
     --lime-dim: #E4F6C6;
+    --lime-text: #3F7D00;
     --coral-dim: #FFE1DA;
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -57,10 +59,21 @@
     padding-bottom: 96px;
   }
   a { color: inherit; }
-  .app { max-width: 480px; margin: 0 auto; padding: 18px 16px 8px; }
+  .app { max-width: 480px; margin: 0 auto; padding: calc(18px + env(safe-area-inset-top)) 16px 8px; }
   @media (min-width: 900px) {
     body { display: flex; padding-bottom: 0; }
     .app { max-width: 640px; margin: 0; padding: 28px 28px 40px; flex: 1; }
+  }
+
+  /* Brand */
+  .brand-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .brand-row img { width: 34px; height: 34px; border-radius: 10px; display: block; }
+  .brand-row span { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
+  nav.bottom-nav .brandmark { display: none; }
+  @media (min-width: 900px) {
+    .brand-row { display: none; }
+    nav.bottom-nav .brandmark { display: flex; align-items: center; gap: 10px; }
+    nav.bottom-nav .brandmark img { width: 30px; height: 30px; border-radius: 9px; display: block; }
   }
 
   /* Top bar */
@@ -108,7 +121,7 @@
     padding: 12px 6px; cursor: pointer; color: var(--text); font-family: var(--font); font-size: 11.5px; font-weight: 600;
   }
   .qbtn .ic { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; }
-  .qbtn.in .ic { background: var(--lime-dim); color: var(--lime); }
+  .qbtn.in .ic { background: var(--lime-dim); color: var(--lime-text); }
   .qbtn.out .ic { background: var(--coral-dim); color: var(--coral); }
   .qbtn.exp .ic { background: var(--surface-2); color: var(--gold); }
 
@@ -117,7 +130,7 @@
   .kpi-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); padding: 13px 14px; }
   .kpi-card .l { font-size: 11.5px; color: var(--text-faint); margin-bottom: 4px; }
   .kpi-card .v { font-size: 17px; font-weight: 800; }
-  .kpi-card.in .v { color: var(--lime); }
+  .kpi-card.in .v { color: var(--lime-text); }
   .kpi-card.out .v { color: var(--coral); }
 
   /* Cards / panels */
@@ -132,14 +145,14 @@
   .tx-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
   .tx-row:last-child { border-bottom: none; }
   .tx-ic { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; flex-shrink: 0; }
-  .tx-ic.in { background: var(--lime-dim); color: var(--lime); }
+  .tx-ic.in { background: var(--lime-dim); color: var(--lime-text); }
   .tx-ic.out { background: var(--coral-dim); color: var(--coral); }
   .tx-info { flex: 1; min-width: 0; }
   .tx-cat { font-size: 13.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .tx-sub { font-size: 11.5px; color: var(--text-faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .tx-amt { text-align: right; flex-shrink: 0; }
   .tx-amt .n { font-size: 14px; font-weight: 800; }
-  .tx-amt .n.in { color: var(--lime); }
+  .tx-amt .n.in { color: var(--lime-text); }
   .tx-amt .n.out { color: var(--coral); }
   .tx-amt .cur { font-size: 10px; color: var(--text-faint); display: block; }
   .tx-actions { display: flex; gap: 2px; margin-left: 4px; }
@@ -162,12 +175,12 @@
     font-size: 10.5px; font-weight: 700; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; padding: 2px 10px;
   }
   nav.bottom-nav button .dot { width: 5px; height: 5px; border-radius: 50%; background: transparent; }
-  nav.bottom-nav button.active { color: var(--lime); }
+  nav.bottom-nav button.active { color: var(--lime-text); }
   nav.bottom-nav button.active .dot { background: var(--lime); }
   nav.bottom-nav svg { width: 20px; height: 20px; }
 
   .fab {
-    position: fixed; right: 18px; bottom: 84px; z-index: 25;
+    position: fixed; right: 18px; bottom: calc(92px + env(safe-area-inset-bottom)); z-index: 25;
     width: 54px; height: 54px; border-radius: 50%; background: var(--lime); color: #0B0F0D;
     border: none; font-size: 26px; font-weight: 700; cursor: pointer;
     box-shadow: 0 8px 22px rgba(198,255,94,0.28);
@@ -204,7 +217,7 @@
 
   .type-toggle { display: flex; background: var(--surface-2); border-radius: 12px; padding: 4px; margin-bottom: 14px; }
   .type-toggle button { flex: 1; background: none; border: none; padding: 9px; border-radius: 9px; font-family: var(--font); font-size: 13px; font-weight: 700; color: var(--text-faint); cursor: pointer; }
-  .type-toggle button.active.entree { background: var(--lime-dim); color: var(--lime); }
+  .type-toggle button.active.entree { background: var(--lime-dim); color: var(--lime-text); }
   .type-toggle button.active.sortie { background: var(--coral-dim); color: var(--coral); }
 
   .field { margin-bottom: 12px; }
@@ -256,7 +269,7 @@
 <body>
 
 <nav class="bottom-nav" id="bottom-nav">
-  <span class="brandmark">Budjé</span>
+  <span class="brandmark"><img src="icons/icon-192.png" alt="">Budjé</span>
   <button data-view="home" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>Accueil</span><span class="dot"></span></button>
   <button data-view="transactions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>Transactions</span><span class="dot"></span></button>
   <button data-view="categories"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12l-8 8-8-8 8-8h8v8z"/></svg><span>Catégories</span><span class="dot"></span></button>
@@ -265,6 +278,8 @@
 <button class="fab" id="fab-add" aria-label="Ajouter une transaction">+</button>
 
 <div class="app">
+
+  <div class="brand-row"><img src="icons/icon-192.png" alt=""><span>Budjé</span></div>
 
   <div class="topbar">
     <div class="greet">
