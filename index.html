@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Bilan — mon budget personnel</title>
+<title>Budjé — mon budget personnel</title>
 <meta name="theme-color" content="#0B0F0D">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Budjé">
+<meta name="application-name" content="Budjé">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -254,7 +256,7 @@
 <body>
 
 <nav class="bottom-nav" id="bottom-nav">
-  <span class="brandmark">Bilan</span>
+  <span class="brandmark">Budjé</span>
   <button data-view="home" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>Accueil</span><span class="dot"></span></button>
   <button data-view="transactions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>Transactions</span><span class="dot"></span></button>
   <button data-view="categories"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12l-8 8-8-8 8-8h8v8z"/></svg><span>Catégories</span><span class="dot"></span></button>
@@ -417,7 +419,7 @@
 </div>
 
 <div id="print-report">
-  <h1>Bilan — rapport</h1>
+  <h1>Budjé — rapport</h1>
   <p class="p-sub" id="print-sub"></p>
   <table>
     <thead><tr><th>Date</th><th>Type</th><th>Catégorie</th><th>Description</th><th class="amt">Montant</th></tr></thead>
@@ -723,7 +725,7 @@
     const blob = new Blob(['\uFEFF' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = 'bilan-transactions-' + new Date().toISOString().slice(0,10) + '.csv';
+    a.download = 'budje-transactions-' + new Date().toISOString().slice(0,10) + '.csv';
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
   });
   function csvEsc(s){ s = String(s); return s.includes(';') || s.includes('"') ? '"' + s.replace(/"/g,'""') + '"' : s; }

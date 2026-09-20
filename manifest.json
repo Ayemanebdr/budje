@@ -1,6 +1,8 @@
 {
-  "name": "Bilan — mon budget personnel",
-  "short_name": "Bilan",
+  "name": "Budjé — mon budget",
+  "short_name": "Budjé",
+  "id": "./",
+  "lang": "fr",
   "description": "Suivi personnel des entrées, des sorties et du budget par catégorie et par devise.",
   "start_url": "./index.html",
   "scope": "./",

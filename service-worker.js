@@ -1,11 +1,12 @@
-const CACHE_NAME = 'bilan-cache-v1';
+const CACHE_NAME = 'budje-cache-v2';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './vendor/chart.umd.min.js',
   './icons/icon-192.png',
-  './icons/icon-512.png'
+  './icons/icon-512.png',
+  './icons/apple-touch-icon.png'
 ];
 
 self.addEventListener('install', (event) => {
